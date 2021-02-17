@@ -87,7 +87,7 @@ app.route("/articles/:articleTitle")
     }else{
       res.send(err)
     }
-  })
+  });
 })
 
 .patch(function(req,res){
@@ -102,6 +102,19 @@ app.route("/articles/:articleTitle")
       }
     }
   );
+})
+
+.delete(function(req,res){
+  Article.deleteOne(
+    {title:req.params.articleTitle},
+    function(err){
+      if(!err){
+        res.send("Succefully deleted")
+      }else{
+        res.send(err)
+      }
+    }
+  )
 });
 
 
